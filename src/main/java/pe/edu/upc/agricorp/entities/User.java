@@ -18,10 +18,10 @@ public class User {
     private String username;
     private String password;
 
-    //@JsonIgnore
-    //@OneToOne
-    //@JoinColumn(name="client_id")
-    //private Client client;
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name="client_id")
+    private Client client;
 
     @ManyToOne
     @JoinColumn(name="role_id")

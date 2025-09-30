@@ -1,6 +1,7 @@
 package pe.edu.upc.agricorp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +22,9 @@ public class Client {
     private String phoneNumber;
     private String location;
 
-
-
+    @JsonIgnore
+    @OneToOne(mappedBy ="client")
+    private User user;
 
     @Override
     public String toString() {
