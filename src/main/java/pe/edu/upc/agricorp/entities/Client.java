@@ -1,6 +1,7 @@
 package pe.edu.upc.agricorp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,10 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<Cliente_Planta> clientePlant;
 
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name="chat_id")
+    private Chat chat;
 
     @Override
     public String toString() {

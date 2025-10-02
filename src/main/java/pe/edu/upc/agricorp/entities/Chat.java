@@ -1,35 +1,38 @@
 package pe.edu.upc.agricorp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "gardeners")
 
-public class Gardener {
+public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private String name;
+    private LocalDate date;
+    private String message;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "gardener", fetch = FetchType.EAGER)
-    private List<Chat> chat;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_gardener")
+    private Gardener gardener;
+
+    @OneToOne(mappedBy ="chat")
+    private Client client;
 
     @Override
     public String toString() {
-        return "Gardener{" +
+        return "Chat{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", message='" + message + '\'' +
                 '}';
     }
 
