@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name="clients")
 @Data
@@ -21,7 +23,8 @@ public class Client {
     private String phoneNumber;
     private String location;
 
-
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private List<Cliente_Planta> clientePlant;
 
 
     @Override

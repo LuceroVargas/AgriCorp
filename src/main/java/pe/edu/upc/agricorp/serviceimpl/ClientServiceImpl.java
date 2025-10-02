@@ -14,7 +14,6 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-
     @Override
     public Client add(Client client) {
 
@@ -30,8 +29,6 @@ public class ClientServiceImpl implements ClientService {
         if (client.getLocation()==null || client.getLocation().isBlank()) {
             return null;
         }
-
-
         return clientRepository.save(client);
     }
 
@@ -78,7 +75,5 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> listAll() {
         return clientRepository.findAll();
     }
-
-
 
 }
