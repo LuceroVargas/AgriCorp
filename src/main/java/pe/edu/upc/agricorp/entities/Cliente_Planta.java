@@ -24,9 +24,9 @@ public class Cliente_Planta {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    //@ManyToOne
-    //@JoinColumn(name = "id_plant")
-    //private Plant plant;
+    @ManyToOne
+    @JoinColumn(name = "id_plant")
+    private Plant plant;
 
     //@OneToMany(mappedBy = "clientPlant", fetch = FetchType.EAGER)
     //private List<Historical> historicals;

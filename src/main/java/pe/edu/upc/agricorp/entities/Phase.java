@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 @Entity
 @Table(name="phases")
@@ -29,6 +30,14 @@ public class Phase {
     //@OneToMany
     //@JoinColumn(name="recommendation_id")
     //private Recommendation recommendation;
+
+    @JsonIgnore
+    @ToStringExclude
+    @ManyToOne
+    @JoinColumn(name="id_Planta")
+    private Plant plant;
+
+
 
     @Override
     public String toString() {

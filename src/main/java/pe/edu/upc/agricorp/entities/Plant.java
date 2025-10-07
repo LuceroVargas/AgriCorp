@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
+import java.util.List;
+
 @Entity
 @Table(name="plants")
 @Data
@@ -26,15 +28,17 @@ public class Plant {
     private Float minimum_space;
     private Integer growthTime;
 
-    /*@JsonIgnore
+    @JsonIgnore
     @ToStringExclude
     @ManyToOne
     @JoinColumn(name="id_Taxonomy")
-    private Taxonomy taxonomy;*/
+    private Taxonomy taxonomy;
 
+    @OneToMany(mappedBy = "plant", fetch = FetchType.EAGER)
+    private List<Phase>phases ;
 
-    /*@OneToMany(mappedBy = "plant", fetch = FetchType.EAGER)
-    private List<Cliente_planta> clientePlantas;*/
+    @OneToMany(mappedBy = "plant", fetch = FetchType.EAGER)
+    private List<Cliente_Planta> clientePlantas;
 
     //falta solucionar la relación entre las tablas fase y planta
 
